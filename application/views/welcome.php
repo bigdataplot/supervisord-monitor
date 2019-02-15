@@ -37,7 +37,7 @@
 			}
 		;?></a></li>
 		<li><a href="<?php echo site_url();?>">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
-              <li><a href="support_email">Contact</a></li>
+              <li><a href="mailto:__support_email__">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

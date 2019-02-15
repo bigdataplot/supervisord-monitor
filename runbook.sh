@@ -24,6 +24,9 @@ sudo docker run --name job-monitor \
     --restart always\
     --publish 9011:80 \
     --publish 9001:9001 \
+    --env SUPPORTEMAIL="support@email.com" \
+    --env SUPPORTNAME="Job Center" \
+    --env TERM=xterm \
     --volume /etc/localtime:/etc/localtime:ro \
     bigdataplot/job-monitor:1.61
 

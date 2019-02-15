@@ -60,10 +60,10 @@ RUN chmod 511 start_monitor.sh
 
 ## Customize Welcome Page
 ENV SUPPORTEMAIL "support@email.com"
-ENV SUPPORTNAME "Support Center"
+ENV SUPPORTNAME "Support-Center"
 
-RUN sed -i "s|support_email|${SUPPORTEMAIL}|g" ./application/views/welcome.php
-RUN sed -i "s|support_name|${SUPPORTNAME}|g" ./application/views/welcome.php
+RUN sed -i "s|__support_email__|${SUPPORTEMAIL}|g" ./application/views/welcome.php
+RUN sed -i "s|__support_name__|${SUPPORTNAME}|g" ./application/views/welcome.php
 
 
 ## Create Test Process
