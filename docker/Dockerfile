@@ -48,22 +48,17 @@ RUN cp /etc/supervisor/supervisord.conf ./application/config/supervisord.conf
 RUN echo " " >> ./application/config/supervisord.conf
 RUN echo "[inet_http_server]" >> ./application/config/supervisord.conf
 RUN echo "port=*:9001" >> ./application/config/supervisord.conf
+
+
+## Customize Welcome Page
 RUN echo "username=${USR}" >> ./application/config/supervisord.conf
 RUN echo "password=${PSW}" >> ./application/config/supervisord.conf
 
 
 ## File Transfer / Fix Permission
 COPY start_monitor.sh start_monitor.sh
-RUN sed -i "s|start_monitor_location|${JOBFOLDER}|g" start_monitor.sh
+RUN sed -i "s|__STARTMONITORPATH__|${JOBFOLDER}|g" start_monitor.sh
 RUN chmod 511 start_monitor.sh
-
-
-## Customize Welcome Page
-ENV SUPPORTEMAIL "support@email.com"
-ENV SUPPORTNAME "Support-Center"
-
-RUN sed -i "s|__support_email__|${SUPPORTEMAIL}|g" ./application/views/welcome.php
-RUN sed -i "s|__support_name__|${SUPPORTNAME}|g" ./application/views/welcome.php
 
 
 ## Create Test Process

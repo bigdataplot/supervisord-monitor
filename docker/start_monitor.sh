@@ -1,7 +1,8 @@
 #!/bin/bash
 #start_monitor.sh
 
-export JOBFOLDER=start_monitor_location
+export JOBFOLDER=__STARTMONITORPATH__
 supervisord -c ${JOBFOLDER}/application/config/supervisord.conf
-sleep 5
+
+sleep 3
 php -S 0.0.0.0:80 -t ${JOBFOLDER}/public_html/

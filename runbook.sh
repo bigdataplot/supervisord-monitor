@@ -25,21 +25,14 @@ sudo docker run --name job-monitor \
     --restart always\
     --publish 9011:80 \
     --publish 9001:9001 \
-    --env SUPPORTEMAIL="support@email.com" \
-    --env SUPPORTNAME="Job Center" \
     --env TERM=xterm \
     --volume /etc/localtime:/etc/localtime:ro \
     bigdataplot/job-monitor:2.01
 
 
+sudo docker exec -it job-monitor bash
 
-sudo docker run --name job-monitor \
-    -it \
-    --publish 9011:80 \
-    --publish 9001:9001 \
-    --env SUPPORTEMAIL="support@email.com" \
-    --env SUPPORTNAME="Job Center" \
-    --env TERM=xterm \
-    --volume /etc/localtime:/etc/localtime:ro \
-    bigdataplot/job-monitor:2.01 bash
+## Customize support email and Welcome page title
 
+sed -i "s|__support_email__|your@email.com|g" ./application/views/welcome.php
+sed -i "s|__support_name__|Your Job Center|g" ./application/views/welcome.php
