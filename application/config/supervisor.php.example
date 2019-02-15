@@ -15,7 +15,7 @@ $config['show_host'] = false;
 
 $config['supervisor_servers'] = array(
 	'server01' => array(
-		'url' => 'http://server01.app/RPC2',
+		'url' => 'http://localhost/RPC2',
 		'port' => '9001',
 		'username' => 'yourusername',
 		'password' => 'yourpass'

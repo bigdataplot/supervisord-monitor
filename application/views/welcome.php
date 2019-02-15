@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <a class="brand" href="<?php echo site_url('');?>">Support Center</a>
+		  <a class="brand" href="<?php echo site_url('');?>">Job Support Center</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 			<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
@@ -37,22 +37,22 @@
 			}
 		;?></a></li>
 		<li><a href="<?php echo site_url();?>">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
-              <li><a href="mailto:martin@lazarov.bg">Contact</a></li>
+              <li><a href="mailto:support@email.com">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-	
+
 
 	<div class="container">
-	
+
 		<?php
 		if($muted){
 			echo '<div class="row"><div class="span4 offset4 label label-important" style="padding:10px;margin-bottom:20px;text-align:center;">';
 			echo 'Sound muted for '.timespan(time(),$muted).' <span class="pull-right"><a href="?mute=-1" style="color:white;"><i class="icon-music icon-white"></i> Unmute</a></span></div></div>';
 		}
-	
+
 		?>
 		<div class="row">
 				<?php
@@ -90,10 +90,10 @@
 
 						if($item['group'] != $item['name']) $item_name = $item['group'].":".$item['name'];
 						else $item_name = $item['name'];
-						
+
 						$check = $CI->_request($name,'readProcessStderrLog',array($item_name,-1000,0));
 						if(is_array($check)) $check = print_r($check,1);
-						
+
 						if(!is_array($item)){
 								// Not having array means that we have error.
 								echo '<tr><td colspan="4">'.$item.'</td></tr>';
@@ -152,7 +152,7 @@
 					}
 
 					?>
-				</table>				
+				</table>
 			</div>
 				<?php
 				}
@@ -162,18 +162,15 @@
 				if($alert){
 					echo '<title>!!! WARNING !!!</title>';
 				}else{
-					echo '<title>Support center</title>';
+					echo '<title>Job Support Center</title>';
 				}
-				
+
 				?>
 		</div>
 	</div>
 
     </div> <!-- /container -->
-	
-	<div class="footer">
-		<p>Powered by <a href="https://github.com/mlazarov/supervisord-monitor" target="_blank">Supervisord Monitor</a> | Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-	</div>
+
 	<script>
 	function show_content($param){
 		stopTimer();
@@ -216,7 +213,7 @@
 			stopTimer();
 			location.href="<?php echo site_url() ?>";
 		}
-		
+
 	}
 	function nl2br (str, is_xhtml) {
 		var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br ' + '/>' : '<br>';
