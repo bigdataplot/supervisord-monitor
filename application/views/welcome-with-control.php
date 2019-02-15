@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <a class="brand" href="<?php echo site_url('');?>">support_name</a>
+		  <a class="brand" href="<?php echo site_url('');?>">__support_name__</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 			<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
@@ -162,7 +162,7 @@
 				if($alert){
 					echo '<title>!!! WARNING !!!</title>';
 				}else{
-					echo '<title>support_name</title>';
+					echo '<title>__support_name__</title>';
 				}
 
 				?>
