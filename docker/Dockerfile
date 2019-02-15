@@ -18,20 +18,23 @@ MAINTAINER Yongjian(Ken) Ouyang <yongjian.ouyang@outlook.com>
 
 
 ## Environment Settings
-ENV JOBFOLDER "/apps/job-monitor"
+ENV APPFOLDER "/local/apps"
+ENV JOBFOLDER ${APPFOLDER}/job-monitor
+ENV USR "yourusername"
+ENV PSW "yourpass"
 
 
 ## Clone from Git
-RUN mkdir -p /local/apps/
+RUN mkdir -p ${JOBFOLDER}
 
-WORKDIR /local/apps/
+WORKDIR ${APPFOLDER}
 RUN git clone https://github.com/bigdataplot/supervisord-monitor.git
 
-RUN cp -a /local/apps/supervisord-monitor/. ${JOBFOLDER}/
-RUN rm -rf /local/apps/supervisord-monitor/
+RUN cp -a ${APPFOLDER}/supervisord-monitor/. ${JOBFOLDER}/
+RUN rm -rf ${APPFOLDER}/supervisord-monitor/
 
 
-## Create/Change App Directory
+## Change App Directory
 WORKDIR ${JOBFOLDER}
 
 
@@ -53,6 +56,12 @@ RUN echo "password=${PSW}" >> ./application/config/supervisord.conf
 COPY start_monitor.sh start_monitor.sh
 RUN sed -i "s|start_monitor_location|${JOBFOLDER}|g" start_monitor.sh
 RUN chmod 511 start_monitor.sh
+
+
+## Create Test Process
+RUN mkdir -p /jobs
+COPY py_test.py /jobs/py_test.py
+COPY py_test.conf /etc/supervisor/conf.d/py_test.conf
 
 
 ## Cleaning
