@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <a class="brand" href="<?php echo site_url('');?>">Job Support Center</a>
+		  <a class="brand" href="<?php echo site_url('');?>">support_name</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 			<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
@@ -37,7 +37,7 @@
 			}
 		;?></a></li>
 		<li><a href="<?php echo site_url();?>">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
-              <li><a href="mailto:support@email.com">Contact</a></li>
+              <li><a href="support_email">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -162,7 +162,7 @@
 				if($alert){
 					echo '<title>!!! WARNING !!!</title>';
 				}else{
-					echo '<title>Job Support Center</title>';
+					echo '<title>support_name</title>';
 				}
 
 				?>

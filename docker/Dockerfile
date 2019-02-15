@@ -58,6 +58,14 @@ RUN sed -i "s|start_monitor_location|${JOBFOLDER}|g" start_monitor.sh
 RUN chmod 511 start_monitor.sh
 
 
+## Customize Welcome Page
+ENV SUPPORTEMAIL "support@email.com"
+ENV SUPPORTNAME "Support Center"
+
+RUN sed -i "s|support_email|${SUPPORTEMAIL}|g" ./application/views/welcome.php
+RUN sed -i "s|support_name|${SUPPORTNAME}|g" ./application/views/welcome.php
+
+
 ## Create Test Process
 RUN mkdir -p /jobs/log
 RUN mkdir -p /jobs/error
