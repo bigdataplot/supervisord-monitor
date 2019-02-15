@@ -9,10 +9,10 @@ for file in *; do
     mv "$file.temp" "$file"
 done
 
-sudo docker build -t bigdataplot/job-monitor:s1.61 .
+sudo docker build -t bigdataplot/job-monitor:1.61 .
 
 sudo docker login --username bigdataplot
-sudo docker push bigdataplot/job-monitor:s1.61
+sudo docker push bigdataplot/job-monitor:1.61
 
 ## ======================================== ##
 ##               Build my own
@@ -25,29 +25,7 @@ sudo docker run --name job-monitor \
     --publish 9011:80 \
     --publish 9001:9001 \
     --volume /etc/localtime:/etc/localtime:ro \
-    bigdataplot/job-monitor:s1.61
-
-
-sudo docker run --name job-monitor \
-    -it \
-    --publish 9011:80 \
-    --publish 9001:9001 \
-    --volume /etc/localtime:/etc/localtime:ro \
-    bigdataplot/job-monitor:s1.61bash
-
-
-
-# host
-mkdir /apps/job-monitor
-chmod 700 /apps/job-monitor
-
-sudo docker run --name job-monitor \
-    -itd \
-    --publish 9011:80 \
-    --publish 9001:9001 \
-    --volume /apps/job-monitor:/apps/job-monitor \
-    --volume /etc/localtime:/etc/localtime:ro \
-    php:7
+    bigdataplot/job-monitor:1.61
 
 
 sudo docker exec -it job-monitor bash

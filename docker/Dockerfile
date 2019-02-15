@@ -63,6 +63,8 @@ RUN mkdir -p /jobs/log
 RUN mkdir -p /jobs/error
 COPY py_test.py /jobs/py_test.py
 COPY py_test.conf /etc/supervisor/conf.d/py_test.conf
+RUN touch /jobs/log/py_test.log
+RUN touch /jobs/error/py_test_err.log
 
 
 ## Cleaning

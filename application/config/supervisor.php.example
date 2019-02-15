@@ -5,7 +5,7 @@
 $config['supervisor_cols'] = 2;
 
 // Refresh Dashboard every x seconds. 0 to disable
-$config['refresh'] = 60;
+$config['refresh'] = 30;
 
 // Enable or disable Alarm Sound
 $config['enable_alarm'] = false;
