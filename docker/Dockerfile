@@ -59,7 +59,8 @@ RUN chmod 511 start_monitor.sh
 
 
 ## Create Test Process
-RUN mkdir -p /jobs
+RUN mkdir -p /jobs/log
+RUN mkdir -p /jobs/error
 COPY py_test.py /jobs/py_test.py
 COPY py_test.conf /etc/supervisor/conf.d/py_test.conf
 

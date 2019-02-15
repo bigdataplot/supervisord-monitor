@@ -5,10 +5,10 @@
 $config['supervisor_cols'] = 2;
 
 // Refresh Dashboard every x seconds. 0 to disable
-$config['refresh'] = 10;
+$config['refresh'] = 60;
 
 // Enable or disable Alarm Sound
-$config['enable_alarm'] = true;
+$config['enable_alarm'] = false;
 
 // Show hostname after server name
 $config['show_host'] = false;
