@@ -31,6 +31,22 @@ sudo docker run --name job-monitor \
     bigdataplot/job-monitor:1.61
 
 
+sudo docker run --name job-monitor \
+    -it \
+    --publish 9011:80 \
+    --publish 9001:9001 \
+    --env SUPPORTEMAIL="support@email.com" \
+    --env SUPPORTNAME="Job Center" \
+    --env TERM=xterm \
+    --volume /etc/localtime:/etc/localtime:ro \
+    bigdataplot/job-monitor:1.61 bash
+
+
+export SUPPORTNAME="Job Center"
+sed -i "s|support_name|${SUPPORTNAME}|g" ./application/views/welcome.php
+
+
+
 sudo docker exec -it job-monitor bash
 
 apt-get update

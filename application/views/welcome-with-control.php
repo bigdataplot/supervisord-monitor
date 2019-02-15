@@ -75,6 +75,11 @@
 						echo '&nbsp;<i>'.$version[$name].'</i>';
 						if(!isset($procs['error'])){
 						?>
+						<span class="server-btns pull-right">
+							<a href="<?php echo site_url('/control/stopall/'.$name); ?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i> Stop all</a>
+							<a href="<?php echo site_url('/control/startall/'.$name); ?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i> Start all</a>
+							<a href="<?php echo site_url('/control/restartall/'.$name); ?>" class="btn btn-mini btn-primary" type="button"><i class="icon icon-refresh icon-white"></i> Restart all</a>
+						</span>
 						<?php
 						}
 						?>
@@ -122,6 +127,26 @@
 							</td>
 							<td width="10"><span class="label label-<?php echo $class;?>"><?php echo $status;?></span></td>
 							<td width="80" style="text-align:right"><?php echo $uptime;?></td>
+							<td style="width:1%">
+								<!--div class="btn-group">
+									<button class="btn btn-mini">Action</button>
+									<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="test">Restart</a></li>
+										<li><a href="zz">Stop</a></li>
+									</ul>
+								</div//-->
+								<div class="actions">
+									<?php if($status=='RUNNING'){ ?>
+									<a href="<?php echo site_url('/control/stop/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
+									<a href="<?php echo site_url('/control/restart/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-refresh icon-white"></i></a>
+									<?php } if($status=='STOPPED' || $status == 'EXITED' || $status=='FATAL'){ ?>
+									<a href="<?php echo site_url('/control/start/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
+									<?php } ?>
+								</div>
+							</td>
 						</tr>
 						<?php
 					}
