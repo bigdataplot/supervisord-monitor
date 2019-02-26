@@ -64,7 +64,8 @@
 					}else{
 						$base_url = 'http://';
 					}
-					$ui_url = $base_url . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
+					#$ui_url = $base_url . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
+					$ui_url = 'http://' . $parsed_url['host'] . ':' . $cfg[$name]['port'];
 				?>
 				<div class="span<?php echo ($this->config->item('supervisor_cols')==2?'6':'4');?>">
 				<table class="table table-bordered table-condensed table-striped">
@@ -102,6 +103,11 @@
 							$class = 'success';
 							list($pid,$uptime) = explode(",",$item['description']);
 						}
+						elseif($status=='EXITED'){
+							$class = 'grey';
+							$uptime = end(explode(",",$item['description']));
+							$status = 'COMPLETED';
+						}
 						elseif($status=='STARTING') $class = 'info';
 						elseif($status=='FATAL') { $class = 'important'; $alert = true; }
 						elseif($status=='STOPPED') $class = 'inverse';
@@ -116,12 +122,13 @@
 									$alert = true;
 									echo '<span class="pull-right"><a href="'.site_url('/control/clear/'.$name.'/'.$item_name).'" id="'.$name.'_'.$item_name.
 											'" onclick="return false" data-toggle="popover" data-message="'.htmlspecialchars($check).'" data-original-title="'.
-											$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="' . base_url('/img/alert_icon.png') . '" /></a></span>';
+											#$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="' . base_url('/img/alert_icon.png') . '" /></a></span>';
+											$item_name.'@'.$name.'" class="pop btn btn-mini btn-navbar" type="button"><i class="icon icon-eye-open icon-black"></i></a></span>';
 								}
 								?>
 							</td>
 							<td width="10"><span class="label label-<?php echo $class;?>"><?php echo $status;?></span></td>
-							<td width="80" style="text-align:right"><?php echo $uptime;?></td>
+							<td width="120" style="text-align:right"><?php echo $uptime;?></td>
 						</tr>
 						<?php
 					}
