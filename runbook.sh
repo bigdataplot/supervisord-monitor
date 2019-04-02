@@ -36,3 +36,26 @@ sudo docker exec -it job-monitor bash
 
 sed -i "s|__support_email__|your@email.com|g" ./application/views/welcome.php
 sed -i "s|__support_name__|Your Job Center|g" ./application/views/welcome.php
+
+
+## ======================================== ##
+#  Configure URL :
+nano  application/config/config.php
+
+#  Base Site URL
+$config['base_url']     = '/job-monitor';
+#  Reverse Proxy IPs
+$config['proxy_ips'] = '127.0.0.1';
+
+#  Nginx:
+    # Jobs Monitor Web Page:
+    location /job-monitor {
+        proxy_pass          http://127.0.0.1:9011/;
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-for $remote_addr;
+        port_in_redirect    off;
+        proxy_redirect      default;
+        proxy_connect_timeout 86400;
+    }
+
