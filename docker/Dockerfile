@@ -76,7 +76,7 @@ RUN apt-get --purge autoremove -y && \
 
 
 ## Environment Configuration
-EXPOSE 80
+EXPOSE 9011
 
 
 ## Run
